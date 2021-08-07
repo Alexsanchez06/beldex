@@ -214,7 +214,7 @@ namespace
   >;
 
   template<typename T>
-  quoted_result<T> quoted(const T& arg)
+  quoted_result<T> add_quotes(const T& arg)
   {
     return boost::range::join(boost::range::join(ceref(u8"\""), arg), ceref(u8"\""));
   }
@@ -242,13 +242,13 @@ namespace
   {
     str.append(u8"Digest ");
     add_first_field(str, u8"algorithm", algorithm);
-    add_field(str, u8"nonce", quoted(user.server.nonce));
-    add_field(str, u8"realm", quoted(user.server.realm));
-    add_field(str, u8"response", quoted(response));
-    add_field(str, u8"uri", quoted(uri));
-    add_field(str, u8"username", quoted(user.credentials.username));
+    add_field(str, u8"nonce", add_quotes(user.server.nonce));
+    add_field(str, u8"realm", add_quotes(user.server.realm));
+    add_field(str, u8"response", add_quotes(response));
+    add_field(str, u8"uri", add_quotes(uri));
+    add_field(str, u8"username", add_quotes(user.credentials.username));
     if (!user.server.opaque.empty())
-      add_field(str, u8"opaque", quoted(user.server.opaque));
+      add_field(str, u8"opaque", add_quotes(user.server.opaque));
   }
 
   //! Implements superseded algorithm specified in RFC 2069
