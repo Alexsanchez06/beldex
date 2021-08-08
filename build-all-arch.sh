@@ -9,8 +9,8 @@ base_dir=`pwd`
 
 build_type=release # or debug
 android_api=21
-#archs=(arm arm64 x86 x86_64)
-archs=(arm)
+archs=(arm arm64 x86 x86_64)
+#archs=(arm)
 
 orig_cxx_flags=$CXXFLAGS
 for arch in ${archs[@]}; do
