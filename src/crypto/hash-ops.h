@@ -81,8 +81,9 @@ enum
 
 #define CN_TURTLE_PAGE_SIZE 262144
 void cn_fast_hash(const void *data, size_t length, char *hash);
-void cn_turtle_hash(const void *data, size_t length, char *hash, int light, int variant, int prehashed, uint32_t scratchpad, uint32_t iterations);
-void cn_monero_hash(const void *data, size_t length, char *hash, int variant, int prehashed);
+void cn_slow_hash(const void *data, size_t length, char *hash, int variant, int prehashed);
+void cn_conceal_slow_hash_v0(const void *data, size_t length, char *hash);
+
 
 void hash_extra_blake(const void *data, size_t length, char *hash);
 void hash_extra_groestl(const void *data, size_t length, char *hash);

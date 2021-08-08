@@ -176,7 +176,7 @@
     else if((callback_name == method_name) && (cond)) \
 { \
   PREPARE_OBJECTS_FROM_JSON(command_type) \
-  epee::json_rpc::error_response fail_resp{}; \
+  epee::json_rpc::error_response fail_resp = AUTO_VAL_INIT(fail_resp); \
   fail_resp.jsonrpc = "2.0"; \
   fail_resp.id = req.id; \
   MINFO(m_conn_context << "Calling RPC method " << method_name); \
@@ -195,7 +195,7 @@
     else if(callback_name == method_name) \
 { \
   PREPARE_OBJECTS_FROM_JSON(command_type) \
-  epee::json_rpc::error_response fail_resp{}; \
+  epee::json_rpc::error_response fail_resp = AUTO_VAL_INIT(fail_resp); \
   fail_resp.jsonrpc = "2.0"; \
   fail_resp.id = req.id; \
   MINFO(m_conn_context << "calling RPC method " << method_name); \
@@ -215,7 +215,7 @@
   MINFO(m_conn_context << "calling RPC method " << method_name); \
   if(!callback_f(req.params, resp.result, &m_conn_context)) \
   { \
-    epee::json_rpc::error_response fail_resp{}; \
+    epee::json_rpc::error_response fail_resp = AUTO_VAL_INIT(fail_resp); \
     fail_resp.jsonrpc = "2.0"; \
     fail_resp.id = req.id; \
     fail_resp.error.code = -32603; \

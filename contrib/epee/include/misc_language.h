@@ -50,6 +50,8 @@ namespace epee
 
 
 
+#define AUTO_VAL_INIT(v)   boost::value_initialized<decltype(v)>()
+
 namespace misc_utils
 {
 	template<typename t_type>

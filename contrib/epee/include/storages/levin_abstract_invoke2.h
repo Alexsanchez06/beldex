@@ -116,7 +116,7 @@ namespace epee
       stg.store_to_binary(buff_to_send);
       int res = transport.invoke_async(command, epee::strspan<uint8_t>(buff_to_send), conn_id, [cb, command](int code, const epee::span<const uint8_t> buff, typename t_transport::connection_context& context)->bool 
       {
-        t_result result_struct{};
+        t_result result_struct = AUTO_VAL_INIT(result_struct);
         if( code <=0 )
         {
           LOG_PRINT_L1("Failed to invoke command " << command << " return code " << code);

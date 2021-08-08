@@ -63,7 +63,7 @@ bool handle_rpc_request(const std::string& req_data, \
   else if (callback_name == method_name) \
   { \
     PREPARE_JSONRPC2_OBJECTS_FROM_JSON(command_type) \
-    epee::json_rpc::error_response fail_resp{}; \
+    epee::json_rpc::error_response fail_resp = AUTO_VAL_INIT(fail_resp); \
     fail_resp.jsonrpc = "2.0"; \
     fail_resp.id = req.id; \
     if(!callback_f(req.params, resp.result, fail_resp.error, m_conn_context)) \
