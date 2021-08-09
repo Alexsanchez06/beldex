@@ -30,6 +30,7 @@
 
 #include <limits>
 #include <boost/thread.hpp>
+#include <boost/utility/value_init.hpp>
 #include <boost/chrono/duration.hpp>
 namespace epee
 {
